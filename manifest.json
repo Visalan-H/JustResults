@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "DOM Data Extractor",
+  "version": "1.0",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.mycamu.co.in/*"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["inject.js"],
+      "matches": ["https://www.mycamu.co.in/*"]
+    }
+  ]
+}
