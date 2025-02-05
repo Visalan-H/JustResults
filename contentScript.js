@@ -61,36 +61,105 @@ document.addEventListener("AngularDataEvent", async function (event) {
     exmMonth: semData.ExMnth,
   };
 
-    try {
-        const response = await fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(requestData)
-        });
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-
-        // Convert JSON data to a formatted string
-        const jsonString = JSON.stringify(data, null, 2);
-
-        // Create a Blob and trigger the download
-        const blob = new Blob([jsonString], { type: "application/json" });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = `SemResult.json`;
-        link.click();
-
-        setTimeout(() => {
-            chrome.runtime.sendMessage({ action: "closeCurrentTab" }, (response) => {
-                console.log("Background response:", response);
-            });
-        }, 1000);
-
-    } catch (error) {
-        console.error("Error during fetch or download:", error);
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestData)
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
+    const result = await response.json();
+
+    // const result = JSON.stringify(data, null, 2);
+    const examList = result.output.data.aFinalData[0].exmLst
+
+    const tableData = examList.map(exam => ({
+      subjectName: exam.exmNm,
+      subjectCode: exam.exmCd,
+      grade: exam.grd,
+      gradePoint: exam.grdPnt,
+      credits: exam.crdt,
+      status: exam.status
+    }))
+
+    const name = result.output.data.aFinalData[0].studNm;
+    const regNum = result.output.data.aFinalData[0].AplnNum;
+    const course = result.output.data.aFinalData[0].courseNm;
+    const GPA = result.output.data.aFinalData[0].GPA;
+    const CGPA = result.output.data.aFinalData[0].CGPA;
+    const myHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result of ${name}</title>
+</head>
+<body style="display: flex; flex-direction: column; align-items: center; text-align: center; font-family: Arial, sans-serif; margin: 0; padding: 0;">
+
+    <div style="margin-top: 60px;">
+        <h1>${name}</h1>
+        <h3><strong>Reg No:</strong> ${regNum}</h3>
+        <h3><strong>Course:</strong> ${course}</h3>
+    </div>
+
+    <table style="width: 80%; border-collapse: collapse; margin-top: 20px;">
+        <thead>
+            <tr style="background: #007BFF;">
+                <th style="border: 1px solid #ddd; padding: 10px; color:#FFFFFF;">Subject Name</th>
+                <th style="border: 1px solid #ddd; padding: 10px; color:#FFFFFF;">Subject Code</th>
+                <th style="border: 1px solid #ddd; padding: 10px; color:#FFFFFF;">Grade</th>
+                <th style="border: 1px solid #ddd; padding: 10px; color:#FFFFFF;">Grade Point</th>
+                <th style="border: 1px solid #ddd; padding: 10px; color:#FFFFFF;">Credits</th>
+                <th style="border: 1px solid #ddd; padding: 10px; color:#FFFFFF;">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${tableData.map(exam => `
+            <tr>
+                <td style="border: 1px solid #ddd; padding: 10px; background-color:#E3F2FD">${exam.subjectName}</td>
+                <td style="border: 1px solid #ddd; padding: 10px; background-color:#BBDEFB">${exam.subjectCode}</td>
+                <td style="border: 1px solid #ddd; padding: 10px; background-color:#E3F2FD">${exam.grade}</td>
+                <td style="border: 1px solid #ddd; padding: 10px; background-color:#BBDEFB">${exam.gradePoint}</td>
+                <td style="border: 1px solid #ddd; padding: 10px; background-color:#E3F2FD">${exam.credits}</td>
+                <td style="border: 1px solid #ddd; padding: 10px; background-color:#BBDEFB">${exam.status}</td>
+            </tr>
+            `).join('')}
+        </tbody>
+    </table>
+    <div style="display: flex; width:80%; justify-content: space-between; margin-top: 20px; padding: 0 50px;">
+    <h2 style="color: #333;">GPA: ${GPA}</h2>
+    <p>Please visit the official site with the extension turned off later to confirm.We could make mistakes.
+    <h2 style="color: #333; text-align: right;">CGPA: ${CGPA}</h2>
+    </div>
+</body>
+</html>
+`
+//THIS WE COULD USE BUT I THINK ILL STYLE IT BETTER
+      // < tr >
+      //         <td style="border: 1px solid #ddd; padding: 10px; background-color:#E3F2FD">CGPA</td>
+      //         <td style="border: 1px solid #ddd; padding: 10px; background-color:#BBDEFB">${CGPA}</td>
+      //         <td style="border: 1px solid #ddd; padding: 10px; background-color:#E3F2FD" colspan="4">GPA</td>
+      //         <td style="border: 1px solid #ddd; padding: 10px; background-color:#BBDEFB" colspan="2">${GPA}</td>
+      //       </tr >
+
+    // Create a Blob and trigger the download
+    const blob = new Blob([myHtml], { type: "text/html" });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `${regNum}.html`;
+    link.click();
+
+    setTimeout(() => {
+      chrome.runtime.sendMessage({ action: "closeCurrentTab" }, (response) => {
+        console.log("Background response:", response);
+      });
+    }, 1000);
+
+  } catch (error) {
+    console.error("Error during fetch or download:", error);
+  }
 });
 
 // Function to inject the script into the page
