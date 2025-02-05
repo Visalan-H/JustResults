@@ -25,9 +25,8 @@ h2 {
 }
 
 form {
-    border: 2px solid;
-    border-radius: 16px;
-    box-shadow: 0 0 30px 2px hsl(0, 0%, 70%);
+    border-radius: 20px;
+    box-shadow: 0 0 30px 5px hsl(0, 0%, 70%);
     width: max(290px, 60%);
     height: 70vh;
     display: flex;
@@ -63,16 +62,16 @@ form {
     font-size: 1.1rem;
 }
 
-
 .field input:focus~label,
 .field input:valid~label {
     top: -30px;
     color: #ececed;
+    /* font-size: 1.2rem; */
 }
 
 button {
     font-size: 1rem;
-    padding: 0.8em 1.5em;
+    padding: 0.8em 1.75em;
     cursor: pointer;
     transition: all 0.3s;
     outline: 0;
@@ -81,7 +80,6 @@ button {
     color: #ececed;
     border-radius: 8px;
 }
-
 button:hover {
     color: #212121;
     background-color: #ececed;
