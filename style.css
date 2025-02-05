@@ -27,7 +27,7 @@ h2 {
 form {
     border: 2px solid;
     border-radius: 16px;
-    box-shadow: 0 0 20px 5px;
+    box-shadow: 0 0 30px 2px hsl(0, 0%, 70%);
     width: max(290px, 60%);
     height: 70vh;
     display: flex;
