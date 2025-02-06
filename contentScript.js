@@ -30,9 +30,7 @@ async function getFinalResult(studId, inId) {
   }
 }
 
-// Listen for the custom event dispatched from the injected script
 document.addEventListener("AngularDataEvent", async function (event) {
-  // Get the data from the event detail
   const angularData = event.detail;
   console.log("Content script received Angular data:", angularData);
 
@@ -50,7 +48,6 @@ document.addEventListener("AngularDataEvent", async function (event) {
   const url =
     "https://www.mycamu.co.in/api/ExamResult/get-final-result-by-student";
 
-  // Create the request payload
   const requestData = {
     studId: angularData.stuId,
     InId: angularData.inId,
@@ -71,10 +68,7 @@ document.addEventListener("AngularDataEvent", async function (event) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const result = await response.json();
-
-    // const result = JSON.stringify(data, null, 2);
     const examList = result.output.data.aFinalData[0].exmLst
-
     const tableData = examList.map(exam => ({
       subjectName: exam.exmNm,
       subjectCode: exam.exmCd,
@@ -168,9 +162,9 @@ document.addEventListener("AngularDataEvent", async function (event) {
         }
 
         #helper {
-            position: relative;
-            right: 1%;
-            bottom: 1%;
+            position: absolute;
+            right: 5px;
+            top: 5px;
         }
 
         /* Responsive Design */
@@ -277,18 +271,7 @@ document.addEventListener("AngularDataEvent", async function (event) {
     <p id="helper">Made by Robi and Vizz.</p>
 </body>
 </html>
-
-
 `
-//THIS WE COULD USE BUT I THINK ILL STYLE IT BETTER
-      // < tr >
-      //         <td style="border: 1px solid #ddd; padding: 10px; background-color:#E3F2FD">CGPA</td>
-      //         <td style="border: 1px solid #ddd; padding: 10px; background-color:#BBDEFB">${CGPA}</td>
-      //         <td style="border: 1px solid #ddd; padding: 10px; background-color:#E3F2FD" colspan="4">GPA</td>
-      //         <td style="border: 1px solid #ddd; padding: 10px; background-color:#BBDEFB" colspan="2">${GPA}</td>
-      //       </tr >
-
-    // Create a Blob and trigger the download
     const blob = new Blob([myHtml], { type: "text/html" });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
@@ -306,17 +289,13 @@ document.addEventListener("AngularDataEvent", async function (event) {
   }
 });
 
-// Function to inject the script into the page
 function injectScript(filePath) {
   const script = document.createElement("script");
   script.src = chrome.runtime.getURL(filePath);
   script.onload = function () {
-    // Remove the script element after it has executed
     this.remove();
   };
-  // Append the script to the document to run it in page context
   (document.head || document.documentElement).appendChild(script);
 }
 
-// Inject your script (ensure the filename is correct)
 injectScript("inject.js");
