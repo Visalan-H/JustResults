@@ -6,7 +6,7 @@
             "type": "block"
         },
         "condition": {
-            "urlFilter": "*",
+            "urlFilter": "https://www.mycamu.co.in/*",
             "resourceTypes": [
                 "image",
                 "stylesheet",

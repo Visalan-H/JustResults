@@ -96,8 +96,7 @@ document.addEventListener("AngularDataEvent", async function (event) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result of ${name}</title>
     <style>
-        /* Basic Reset */
-        body, h1, h2, h3, table, th, td {
+        body, h1, h2, h3, table, th, td, p {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -136,7 +135,7 @@ document.addEventListener("AngularDataEvent", async function (event) {
 
         th, td {
             border: 1px solid #ddd;
-            padding: 10px;
+            padding: 1%;
         }
 
         th {
@@ -168,24 +167,71 @@ document.addEventListener("AngularDataEvent", async function (event) {
             color: #666;
         }
 
+        #helper {
+            position: relative;
+            right: 1%;
+            bottom: 1%;
+        }
+
         /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 592px) {
+            body {
+                font-size: 12px;
+            }
+
             table {
                 width: 95%;
+            }
+
+            th, td {
+                padding: 8px 5px;
             }
 
             .gpa-cgpa-container {
                 flex-direction: column;
                 align-items: center;
-                padding: 0 20px;
+                padding: 0;
             }
 
             .gpa-cgpa-container h2 {
+                font-size: 14px;
                 margin-bottom: 10px;
             }
 
             .gpa-cgpa-container p {
+                font-size: 10px;
                 text-align: center;
+            }
+
+            h1 {
+                font-size: 18px;
+            }
+
+            h3 {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            body {
+                font-size: 12px;
+            }
+
+            table, .gpa-cgpa-container {
+                width: 100%;
+            }
+
+            th, td {
+                font-size: 10px;
+                padding: 8px 3.5px;
+            }
+
+            h1, h3 {
+                font-size: 14px;
+            }
+
+            .gpa-cgpa-container h2 {
+                font-size: 12px;
             }
         }
     </style>
@@ -210,16 +256,16 @@ document.addEventListener("AngularDataEvent", async function (event) {
             </tr>
         </thead>
         <tbody>
-            ${tableData.map(exam => `
-            <tr>
+            ${tableData.map(exam =>`
+              <tr>
                 <td>${exam.subjectName}</td>
                 <td>${exam.subjectCode}</td>
                 <td>${exam.grade}</td>
                 <td>${exam.gradePoint}</td>
                 <td>${exam.credits}</td>
                 <td>${exam.status}</td>
-            </tr>
-            `).join('')}
+              </tr>`
+            ).join('')}
         </tbody>
     </table>
 
@@ -228,9 +274,10 @@ document.addEventListener("AngularDataEvent", async function (event) {
         <p>Please visit the official site with the extension turned off later to confirm. We could make mistakes.</p>
         <h2>CGPA: ${CGPA}</h2>
     </div>
-
+    <p id="helper">Made by Robi and Vizz.</p>
 </body>
 </html>
+
 
 `
 //THIS WE COULD USE BUT I THINK ILL STYLE IT BETTER
@@ -252,7 +299,7 @@ document.addEventListener("AngularDataEvent", async function (event) {
       chrome.runtime.sendMessage({ action: "closeCurrentTab" }, (response) => {
         console.log("Background response:", response);
       });
-    }, 1000);
+    }, 10);
 
   } catch (error) {
     console.error("Error during fetch or download:", error);
