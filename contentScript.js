@@ -95,8 +95,102 @@ document.addEventListener("AngularDataEvent", async function (event) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result of ${name}</title>
+    <style>
+        /* Basic Reset */
+        body, h1, h2, h3, table, th, td {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            margin: 0;
+            color: #333;
+        }
+
+        h3 {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        thead {
+            background-color: #007BFF;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        th {
+            color: #FFFFFF;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #E3F2FD;
+        }
+
+        tr:nth-child(odd) td {
+            background-color: #BBDEFB;
+        }
+
+        .gpa-cgpa-container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin-top: 20px;
+            padding: 0 50px;
+        }
+
+        .gpa-cgpa-container h2 {
+            color: #333;
+        }
+
+        .gpa-cgpa-container p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            table {
+                width: 95%;
+            }
+
+            .gpa-cgpa-container {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 20px;
+            }
+
+            .gpa-cgpa-container h2 {
+                margin-bottom: 10px;
+            }
+
+            .gpa-cgpa-container p {
+                text-align: center;
+            }
+        }
+    </style>
 </head>
-<body style="display: flex; flex-direction: column; align-items: center; text-align: center; font-family: Arial, sans-serif; margin: 0; padding: 0;">
+<body>
 
     <div style="margin-top: 60px;">
         <h1>${name}</h1>
@@ -104,37 +198,40 @@ document.addEventListener("AngularDataEvent", async function (event) {
         <h3><strong>Course:</strong> ${course}</h3>
     </div>
 
-    <table style="width: 80%; border-collapse: collapse; margin-top: 20px;">
+    <table>
         <thead>
-            <tr style="background: #007BFF;">
-                <th style="border: 1px solid #ddd; padding: 10px; color:#FFFFFF;">Subject Name</th>
-                <th style="border: 1px solid #ddd; padding: 10px; color:#FFFFFF;">Subject Code</th>
-                <th style="border: 1px solid #ddd; padding: 10px; color:#FFFFFF;">Grade</th>
-                <th style="border: 1px solid #ddd; padding: 10px; color:#FFFFFF;">Grade Point</th>
-                <th style="border: 1px solid #ddd; padding: 10px; color:#FFFFFF;">Credits</th>
-                <th style="border: 1px solid #ddd; padding: 10px; color:#FFFFFF;">Status</th>
+            <tr>
+                <th>Subject Name</th>
+                <th>Subject Code</th>
+                <th>Grade</th>
+                <th>Grade Point</th>
+                <th>Credits</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
             ${tableData.map(exam => `
             <tr>
-                <td style="border: 1px solid #ddd; padding: 10px; background-color:#E3F2FD">${exam.subjectName}</td>
-                <td style="border: 1px solid #ddd; padding: 10px; background-color:#BBDEFB">${exam.subjectCode}</td>
-                <td style="border: 1px solid #ddd; padding: 10px; background-color:#E3F2FD">${exam.grade}</td>
-                <td style="border: 1px solid #ddd; padding: 10px; background-color:#BBDEFB">${exam.gradePoint}</td>
-                <td style="border: 1px solid #ddd; padding: 10px; background-color:#E3F2FD">${exam.credits}</td>
-                <td style="border: 1px solid #ddd; padding: 10px; background-color:#BBDEFB">${exam.status}</td>
+                <td>${exam.subjectName}</td>
+                <td>${exam.subjectCode}</td>
+                <td>${exam.grade}</td>
+                <td>${exam.gradePoint}</td>
+                <td>${exam.credits}</td>
+                <td>${exam.status}</td>
             </tr>
             `).join('')}
         </tbody>
     </table>
-    <div style="display: flex; width:80%; justify-content: space-between; margin-top: 20px; padding: 0 50px;">
-    <h2 style="color: #333;">GPA: ${GPA}</h2>
-    <p>Please visit the official site with the extension turned off later to confirm.We could make mistakes.
-    <h2 style="color: #333; text-align: right;">CGPA: ${CGPA}</h2>
+
+    <div class="gpa-cgpa-container">
+        <h2>GPA: ${GPA}</h2>
+        <p>Please visit the official site with the extension turned off later to confirm. We could make mistakes.</p>
+        <h2>CGPA: ${CGPA}</h2>
     </div>
+
 </body>
 </html>
+
 `
 //THIS WE COULD USE BUT I THINK ILL STYLE IT BETTER
       // < tr >
