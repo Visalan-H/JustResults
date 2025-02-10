@@ -4,6 +4,9 @@
   "version": "1.0",
   "author": "Vizz, Robi",
   "description":"Optimize browsing by blocking unnecessary resources and fetching only essential data.",
+  "icons": {
+    "128": "images/icon-128.png"
+  },
   "permissions": [
     "activeTab",
     "scripting",

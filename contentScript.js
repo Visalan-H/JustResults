@@ -30,7 +30,7 @@ async function getFinalResult(studId, inId) {
   }
 }
 
-document.addEventListener("AngularDataEvent", async function (event) {
+document.addEventListener("AngularDataEvent", async function(event) {
   const angularData = event.detail;
   console.log("Content script received Angular data:", angularData);
 
@@ -250,7 +250,7 @@ document.addEventListener("AngularDataEvent", async function (event) {
             </tr>
         </thead>
         <tbody>
-            ${tableData.map(exam =>`
+            ${tableData.map(exam => `
               <tr>
                 <td>${exam.subjectName}</td>
                 <td>${exam.subjectCode}</td>
@@ -259,7 +259,7 @@ document.addEventListener("AngularDataEvent", async function (event) {
                 <td>${exam.credits}</td>
                 <td>${exam.status}</td>
               </tr>`
-            ).join('')}
+    ).join('')}
         </tbody>
     </table>
 
@@ -268,7 +268,7 @@ document.addEventListener("AngularDataEvent", async function (event) {
         <p>Please visit the official site with the extension turned off later to confirm. We could make mistakes.</p>
         <h2>CGPA: ${CGPA}</h2>
     </div>
-    <p id="helper">Made by Robi and Vizz.</p>
+    <p id="helper">Made with ❤️  Robi and Vizz</p>
 </body>
 </html>
 `
@@ -292,7 +292,7 @@ document.addEventListener("AngularDataEvent", async function (event) {
 function injectScript(filePath) {
   const script = document.createElement("script");
   script.src = chrome.runtime.getURL(filePath);
-  script.onload = function () {
+  script.onload = function() {
     this.remove();
   };
   (document.head || document.documentElement).appendChild(script);
