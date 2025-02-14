@@ -17,7 +17,7 @@
     },
     {
         "id": 2,
-        "priority": 2,
+        "priority": 100,
         "action": {
             "type": "allow"
         },
@@ -25,7 +25,242 @@
             "urlFilter": "https://www.mycamu.co.in/api/ExamResult/get-final-result-by-student",
             "resourceTypes": [
                 "xmlhttprequest"
+            ],
+            "requestHeaders": [
+                {
+                    "header": "X-My-Extension",
+                    "value": "true"
+                }
+            ]
+        }
+    },
+    {
+        "id": 3,
+        "priority": 50,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "https://www.mycamu.co.in/api/ExamResult/get-final-result-by-student",
+            "resourceTypes": [
+                "xmlhttprequest"
+            ]
+        }
+    },
+    {
+        "id": 4,
+        "priority": 50,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*sdk.amazonaws.com/js/aws-sdk-2.279.1.min.js*",
+            "resourceTypes": [
+                "script"
+            ]
+        }
+    },
+    {
+        "id": 5,
+        "priority": 50,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*www.mycamu.co.in/assets/js/xss-filters.min.js*",
+            "resourceTypes": [
+                "script"
+            ]
+        }
+    },
+    {
+        "id": 6,
+        "priority": 50,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*www.mycamu.co.in/app/student/profile/student.profile.html*",
+            "resourceTypes": [
+                "main_frame",
+                "sub_frame",
+                "xmlhttprequest"
+            ]
+        }
+    },
+    {
+        "id": 7,
+        "priority": 50,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*www.mycamu.co.in/app/student/menu/student.centercontent.html*",
+            "resourceTypes": [
+                "main_frame",
+                "sub_frame",
+                "xmlhttprequest"
+            ]
+        }
+    },
+    {
+        "id": 8,
+        "priority": 50,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*www.mycamu.co.in/app/student/menu/student.leftmenu.html*",
+            "resourceTypes": [
+                "main_frame",
+                "sub_frame",
+                "xmlhttprequest"
+            ]
+        }
+    },
+    {
+        "id": 9,
+        "priority": 50,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*www.mycamu.co.in/api/studentprog/getStudProg*",
+            "resourceTypes": [
+                "xmlhttprequest"
+            ]
+        }
+    },
+    {
+        "id": 10,
+        "priority": 50,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*www.gstatic.com/firebasejs/8.2.4/firebase-app.js*",
+            "resourceTypes": [
+                "script"
+            ]
+        }
+    },
+    {
+        "id": 11,
+        "priority": 50,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*www.gstatic.com/firebasejs/8.2.4/firebase-analytics.js*",
+            "resourceTypes": [
+                "script"
+            ]
+        }
+    },
+    {
+        "id": 12,
+        "priority": 50,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*www.mycamu.co.in/app/student/menu/student.home.html*",
+            "resourceTypes": [
+                "main_frame",
+                "sub_frame",
+                "xmlhttprequest"
+            ]
+        }
+    },
+    {
+        "id": 13,
+        "priority": 50,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*www.mycamu.co.in/app/student/menu/student.rightcontent.html*",
+            "resourceTypes": [
+                "main_frame",
+                "sub_frame",
+                "xmlhttprequest"
+            ]
+        }
+    },
+    {
+        "id": 14,
+        "priority": 50,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*www.mycamu.co.in/app/student/menu/student.menu.html*",
+            "resourceTypes": [
+                "main_frame",
+                "sub_frame",
+                "xmlhttprequest"
+            ]
+        }
+    },
+    {
+        "id": 15,
+        "priority": 50,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*www.mycamu.co.in/app/index/public.content.html*",
+            "resourceTypes": [
+                "main_frame",
+                "sub_frame",
+                "xmlhttprequest"
+            ]
+        }
+    },
+    {
+        "id": 16,
+        "priority": 50,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*www.mycamu.co.in/app/index/public.menu.html*",
+            "resourceTypes": [
+                "main_frame",
+                "sub_frame",
+                "xmlhttprequest"
+            ]
+        }
+    },
+    {
+        "id": 17,
+        "priority": 50,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*https://www.mycamu.co.in/app/index/public.footer.html?v=13859*",
+            "resourceTypes": [
+                "main_frame",
+                "sub_frame",
+                "xmlhttprequest"
+            ]
+        }
+    },
+    {
+        "id": 18,
+        "priority": 50,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*https://www.mycamu.co.in/app/student/final_result/student.finalresult.html?v=13859",
+            "resourceTypes": [
+                "main_frame",
+                "sub_frame",
+                "xmlhttprequest"
             ]
         }
     }
+
 ]

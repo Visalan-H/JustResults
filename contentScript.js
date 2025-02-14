@@ -1,5 +1,4 @@
-console.log("Content Scrip loading");
-
+console.time("Task");
 async function getFinalResult(studId, inId) {
   const url =
     "https://www.mycamu.co.in/api/ExamResult/get-final-result-by-student";
@@ -15,6 +14,7 @@ async function getFinalResult(studId, inId) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "X-My-Extension": "true"
       },
       body: JSON.stringify(body),
     });
@@ -30,9 +30,9 @@ async function getFinalResult(studId, inId) {
   }
 }
 
-document.addEventListener("AngularDataEvent", async function(event) {
+document.addEventListener("AngularDataEvent", async function (event) {
   const angularData = event.detail;
-  console.log("Content script received Angular data:", angularData);
+  // console.log("Content script received Angular data:", angularData);
 
   const firstResponse = await getFinalResult(
     angularData.stuId,
@@ -53,7 +53,6 @@ document.addEventListener("AngularDataEvent", async function(event) {
     InId: angularData.inId,
     lastReslt: true,
     vwStus: "vw",
-    //planID: "28d6f9d0edfd7d081b59e946",
     semId: semData.SemID,
     exmMonth: semData.ExMnth,
   };
@@ -61,7 +60,10 @@ document.addEventListener("AngularDataEvent", async function(event) {
   try {
     const response = await fetch(url, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "X-My-Extension": "true"
+      },
       body: JSON.stringify(requestData)
     });
     if (!response.ok) {
@@ -277,10 +279,11 @@ document.addEventListener("AngularDataEvent", async function(event) {
     link.href = URL.createObjectURL(blob);
     link.download = `${regNum}.html`;
     link.click();
+    console.timeEnd("Task");
 
     setTimeout(() => {
       chrome.runtime.sendMessage({ action: "closeCurrentTab" }, (response) => {
-        console.log("Background response:", response);
+        // console.log("Background response:", response);
       });
     }, 10);
 
