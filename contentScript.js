@@ -268,7 +268,7 @@ document.addEventListener("AngularDataEvent", async function(event) {
         <p>Please visit the official site with the extension turned off later to confirm. We could make mistakes.</p>
         <h2>CGPA: ${CGPA}</h2>
     </div>
-    <p id="helper">Made with ❤️  Robi and Vizz</p>
+    <p id="helper">Made with ❤️ by Robi and Vizz</p>
 </body>
 </html>
 `
