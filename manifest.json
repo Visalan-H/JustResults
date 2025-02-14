@@ -1,24 +1,50 @@
 {
   "manifest_version": 3,
-  "name": "DOM Data Extractor",
+  "name": "Just Results",
   "version": "1.0",
+  "author": "Vizz, Robi",
+  "description":"Optimize browsing by blocking unnecessary resources and fetching only essential data.",
+  "icons": {
+    "128": "images/icon-128.png"
+  },
   "permissions": [
     "activeTab",
-    "scripting"
+    "scripting",
+    "declarativeNetRequest"
   ],
+  "host_permissions": [
+    "https://www.mycamu.co.in/*"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "block_all",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
   "background": {
     "service_worker": "background.js"
   },
   "content_scripts": [
     {
-      "matches": ["https://www.mycamu.co.in/*"],
-      "js": ["contentScript.js"]
+      "matches": [
+        "https://www.mycamu.co.in/*"
+      ],
+      "js": [
+        "contentScript.js"
+      ]
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["inject.js"],
-      "matches": ["https://www.mycamu.co.in/*"]
+      "resources": [
+        "inject.js"
+      ],
+      "matches": [
+        "https://www.mycamu.co.in/*"
+      ]
     }
   ]
 }

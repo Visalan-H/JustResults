@@ -8,7 +8,6 @@ if (typeof angular !== "undefined") {
     const stuId = loginData.Student[0].StuID;
     const inId = loginData.InId
 
-    // Create and dispatch a custom event carrying the Angular ID
     const event = new CustomEvent("AngularDataEvent", { detail: { stuId, inId } });
     document.dispatchEvent(event);
   } catch (err) {
