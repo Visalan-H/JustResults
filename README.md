@@ -18,7 +18,7 @@ We have included images showing performance before and after using the extension
 ## Authors
 
 - **Visalan H** - 2nd Year AIML
-- **Robinson** - 2nd Year CSE
+- **Robinson J** - 2nd Year CSE
 
 ## Installation
 
@@ -33,4 +33,4 @@ We have included images showing performance before and after using the extension
 We appreciate your feedback and suggestions. Feel free to reach out with any improvements or issues you encounter.
 
 **Best regards,**  
-Visalan H & Robinson
+Visalan H & Robinson J
