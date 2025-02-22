@@ -12,6 +12,15 @@ Here's how you can set up the extension in your browser:
 
 [video](https://github.com/user-attachments/assets/5e73c4f3-d7fb-4b76-8e9a-63b31ad49dcf)
 
+## Steps:
+
+1.Make sure you've logged in to mycamu recently before activating extension.
+
+2.Open MyCamu final results page [](https://www.mycamu.co.in/#/home/feed/Final_result)
+
+3.It will automatically download a html file containing your results
+
+
 ## Features 🛠️
 
 - 🚫 Blocks unnecessary requests such as CSS, images, fonts, and unneeded JavaScript.
@@ -55,7 +64,7 @@ We have included 📸 images showing performance before and after using the exte
 ## 💬 Feedback
 
 We appreciate your feedback and suggestions. Feel free to reach out with any improvements or issues you encounter. 
-Email:visalanprivate@gmail.com
+Email : visalanprivate@gmail.com
 
 **Best regards,**  
 Visalan H 🦇 & Robinson J 🚀
