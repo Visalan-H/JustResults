@@ -85,6 +85,8 @@ document.addEventListener("AngularDataEvent", async function (event) {
     const course = result.output.data.aFinalData[0].courseNm;
     const GPA = result.output.data.aFinalData[0].GPA;
     const CGPA = result.output.data.aFinalData[0].CGPA;
+    const semCred=result.output.data.aFinalData[0].crdtCmpld;
+    const totalCred = result.output.data.aFinalData[0].cummCrdtCmpld;
     const myHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -155,6 +157,7 @@ document.addEventListener("AngularDataEvent", async function (event) {
         }
 
         .gpa-cgpa-container h2 {
+            font-size:20px;
             color: #333;
         }
 
@@ -267,7 +270,9 @@ document.addEventListener("AngularDataEvent", async function (event) {
 
     <div class="gpa-cgpa-container">
         <h2>GPA: ${GPA}</h2>
+        <h2>Credits(this sem): ${semCred}</h2>
         <p>Please visit the official site with the extension turned off later to confirm. We could make mistakes.</p>
+        <h2>Credits(total): ${totalCred}</h2>
         <h2>CGPA: ${CGPA}</h2>
     </div>
     <p id="helper">Made with ❤️ by Robi and Vizz</p>
