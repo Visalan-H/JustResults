@@ -1,10 +1,10 @@
-# Browser Extension: Efficient Data Extraction & Request Blocking
+# Just Results🚀: Efficient Data Extraction & Request Blocking
 
 ## Overview
 
 This browser extension optimizes web performance by blocking unnecessary requests and extracting only essential data. It is designed to improve speed, reduce network load, and automate data retrieval efficiently.<br>
 <br>
-Click this link to download: (https://github.com/Visalan-H/JustResults/archive/refs/heads/main.zip)
+Click this link to download👉🏻: (https://github.com/Visalan-H/JustResults/archive/refs/heads/main.zip)
 ## Features
 
 - Blocks unnecessary requests such as CSS, images, fonts, and unneeded JavaScript.
