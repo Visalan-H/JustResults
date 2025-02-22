@@ -2,7 +2,7 @@
 
 ## Overview
 
-This browser extension optimizes web performance by blocking unnecessary requests and extracting only essential data. It is designed to improve speed, reduce network load, and automate data retrieval efficiently.
+This browser extension optimizes web performance by blocking unnecessary requests and extracting only essential data. It is designed to improve speed, reduce network load, and automate data retrieval efficiently.<br>
 Click this link to download: (https://github.com/Visalan-H/JustResults/archive/refs/heads/main.zip)
 ## Features
 
